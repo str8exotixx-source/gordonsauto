@@ -1,0 +1,222 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Gordons AutoTraders Design System
+   Colors derived from logo: Red, Silver/Chrome, Black
+   Premium automotive showroom aesthetic
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow:wght@300;400;500;600&display=swap');
+
+@layer base {
+  :root {
+    /* Dark automotive theme - charcoal base */
+    --background: 0 0% 8%;
+    --foreground: 0 0% 95%;
+
+    /* Card surfaces - slightly lighter dark */
+    --card: 0 0% 12%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 95%;
+
+    /* Primary - Bold Dealership Red from logo */
+    --primary: 0 85% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary - Silver/Chrome metallic */
+    --secondary: 0 0% 75%;
+    --secondary-foreground: 0 0% 10%;
+
+    /* Muted - Dark charcoal */
+    --muted: 0 0% 18%;
+    --muted-foreground: 0 0% 60%;
+
+    /* Accent - Subtle red glow */
+    --accent: 0 70% 35%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 15%;
+    --ring: 0 85% 45%;
+
+    --radius: 0.5rem;
+
+    /* Custom tokens for automotive styling */
+    --chrome: 0 0% 80%;
+    --chrome-dark: 0 0% 50%;
+    --showroom-floor: 0 0% 6%;
+    --glass-reflection: 0 0% 100%;
+
+    /* Gradients */
+    --gradient-red: linear-gradient(135deg, hsl(0 85% 50%) 0%, hsl(0 85% 35%) 100%);
+    --gradient-chrome: linear-gradient(180deg, hsl(0 0% 85%) 0%, hsl(0 0% 60%) 50%, hsl(0 0% 85%) 100%);
+    --gradient-dark: linear-gradient(180deg, hsl(0 0% 12%) 0%, hsl(0 0% 6%) 100%);
+    --gradient-card-hover: linear-gradient(180deg, hsl(0 0% 15%) 0%, hsl(0 0% 10%) 100%);
+
+    /* Shadows */
+    --shadow-glow: 0 0 30px hsla(0, 85%, 45%, 0.3);
+    --shadow-card: 0 10px 40px hsla(0, 0%, 0%, 0.5);
+    --shadow-chrome: 0 2px 10px hsla(0, 0%, 100%, 0.1);
+
+    --sidebar-background: 0 0% 10%;
+    --sidebar-foreground: 0 0% 90%;
+    --sidebar-primary: 0 85% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 18%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 0 0% 20%;
+    --sidebar-ring: 0 85% 45%;
+  }
+
+  .dark {
+    --background: 0 0% 5%;
+    --foreground: 0 0% 95%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-semibold tracking-tight;
+  }
+}
+
+@layer components {
+  /* Chrome text effect for headings */
+  .text-chrome {
+    background: var(--gradient-chrome);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Red gradient text */
+  .text-gradient-red {
+    background: var(--gradient-red);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Glowing red button effect */
+  .btn-glow {
+    box-shadow: var(--shadow-glow);
+    transition: all 0.3s ease;
+  }
+
+  .btn-glow:hover {
+    box-shadow: 0 0 50px hsla(0, 85%, 45%, 0.5);
+    transform: translateY(-2px);
+  }
+
+  /* Card hover effect */
+  .card-hover {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .card-hover:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-card);
+  }
+
+  /* Chrome border effect */
+  .border-chrome {
+    border: 1px solid hsl(var(--chrome));
+    box-shadow: inset 0 1px 0 hsla(0, 0%, 100%, 0.1);
+  }
+
+  /* Showroom floor reflection effect */
+  .showroom-reflection {
+    position: relative;
+  }
+
+  .showroom-reflection::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background: linear-gradient(to bottom, transparent, hsl(var(--showroom-floor)));
+    pointer-events: none;
+  }
+
+  /* Search filter overlay style */
+  .filter-overlay {
+    background: hsla(0, 0%, 8%, 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid hsla(0, 0%, 100%, 0.1);
+  }
+
+  /* Slideshow transitions */
+  .slideshow-fade {
+    animation: fadeSlide 1s ease-in-out;
+  }
+
+  @keyframes fadeSlide {
+    from {
+      opacity: 0;
+      transform: scale(1.05);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  /* Price tag styling */
+  .price-tag {
+    background: var(--gradient-red);
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+
+  /* POA styling */
+  .price-poa {
+    background: hsl(var(--muted));
+    color: hsl(var(--chrome));
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+  }
+}
+
+@layer utilities {
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+}
